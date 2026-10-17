@@ -1,0 +1,105 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-sans: "Barlow", sans-serif;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-gold: var(--gold);
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.985 0.002 250);
+  --foreground: oklch(0.2 0.03 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.03 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.03 260);
+  --primary: oklch(0.55 0.21 27);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0.005 250);
+  --secondary-foreground: oklch(0.22 0.04 260);
+  --muted: oklch(0.95 0.004 250);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: oklch(0.93 0.01 250);
+  --accent-foreground: oklch(0.22 0.04 260);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.006 250);
+  --input: oklch(0.88 0.008 250);
+  --ring: oklch(0.55 0.21 27);
+  --navy: oklch(0.22 0.05 262);
+  --navy-foreground: oklch(0.97 0.005 250);
+  --gold: oklch(0.78 0.13 80);
+  --shadow-card: 0 1px 2px oklch(0.2 0.03 260 / 6%), 0 8px 24px -12px oklch(0.2 0.03 260 / 18%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.01em; }
+}
+
+@utility card-elev { box-shadow: var(--shadow-card); }
+@utility eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+@utility btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .75rem 1.5rem; border-radius: var(--radius);
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  transition: all .2s;
+}
+@utility btn-primary {
+  background: var(--primary); color: var(--primary-foreground);
+  &:hover { filter: brightness(1.1); }
+}
+@utility btn-outline-light {
+  border: 2px solid var(--navy-foreground); color: var(--navy-foreground);
+  &:hover { background: var(--navy-foreground); color: var(--navy); }
+}
+@utility btn-navy {
+  background: var(--navy); color: var(--navy-foreground);
+  &:hover { filter: brightness(1.25); }
+}
+@utility field {
+  width: 100%; border: 1px solid var(--input); background: var(--card);
+  border-radius: var(--radius); padding: .65rem .85rem; font-size: .95rem;
+  &:focus { outline: 2px solid var(--ring); outline-offset: 1px; }
+}
